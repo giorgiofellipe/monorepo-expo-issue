@@ -1,0 +1,60 @@
+{
+  "cli": {
+    "version": ">= 10.1.1"
+  },
+  "build": {
+    "monorepo": {
+      "node": "20.11.0",
+      "channel": "monorepo"
+    },
+    "development": {
+      "extends": "monorepo",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "image": "latest",
+        "enterpriseProvisioning": "adhoc"
+      },
+      "channel": "development"
+    },
+    "simulator": {
+      "extends": "monorepo",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true,
+        "image": "latest"
+      },
+      "channel": "simulator"
+    },
+    "preview": {
+      "extends": "monorepo",
+      "distribution": "internal",
+      "autoIncrement": true,
+      "android": {
+        "autoIncrement": "versionCode"
+      },
+      "ios": {
+        "autoIncrement": "buildNumber",
+        "image": "latest",
+        "enterpriseProvisioning": "universal"
+      },
+      "channel": "preview"
+    },
+    "production": {
+      "extends": "monorepo",
+      "autoIncrement": true,
+      "android": {
+        "autoIncrement": "versionCode"
+      },
+      "ios": {
+        "autoIncrement": "buildNumber",
+        "image": "latest"
+      },
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
